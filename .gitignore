@@ -20,6 +20,7 @@ src/SpeedyLead.Server/openapi
 *.suo
 *.userosscache
 *.sln.docstates
+**/packages/*
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
