@@ -1,10 +1,9 @@
 using System;
 using System.Configuration;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Azure.KeyVault;
-using System.Threading.Tasks;
 using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.KeyVault;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 //using AzureResourceReport.Models;
 //using Microsoft.Azure.Management.ResourceManager.Fluent;
 //using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
@@ -94,6 +93,14 @@ namespace _01KeyVaultApp
 // Credentials enable applications to identify themselves to the authentication service when receiving tokens at a web addressable location(using an HTTPS scheme).
 // For a higher level of assurance, we recommend using a certificate(instead of a client secret) as a credential.
 //--------------------------------------------------------------------------------------
+// Configure the Azure Key Vault to allow the Azure AD Application
+// In the Azure Key Vault, the Application registration needs to be given access rights.
+// Open the Key Vault, and click the Access policies. Then click the Add new button.
+// Select the AAD Application registration principle which was created before. 
+// You can find this, by entering the name of the app 01KeyVaultApp. 
+// --------------------------------------------------------------------------------------
+// Now configure the application to use the Key Vault.
+// --------------------------------------------------------------------------------------
 
 // https://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/
 //// Client
