@@ -18,6 +18,8 @@ namespace _01KeyVaultApp
     // https://docs.microsoft.com/en-us/azure/key-vault/tutorial-net-create-vault-azure-web-app
     // https://github.com/damienbod/AspNetCoreBackChannelLogout/blob/master/ConsoleStandaloneUsingAzureSecrets/Program.cs
 
+    // https://docs.microsoft.com/en-us/azure/key-vault/tutorial-net-create-vault-azure-web-app
+
     //{
     //"DNSNameKeyVault": "<DNS NAME from Key Vault>",
     //"AADAppRegistrationAppId": "<Azure AD App Registration Application ID>",
@@ -32,12 +34,13 @@ namespace _01KeyVaultApp
             Console.WriteLine("Start Application and get key vault values");
 
             // https://stackoverflow.com/questions/1189364/reading-settings-from-app-config-or-web-config-in-net
+            string config_aad_appId = ConfigurationManager.AppSettings["aad_appId"];
+            string config_aad_clientsecret = ConfigurationManager.AppSettings["aad_clientsecret"];
             string config_kv_dnsname = ConfigurationManager.AppSettings["kv_dnsname"];
-            string config_kv_appId = ConfigurationManager.AppSettings["kv_appId"];
             string config_kv_key = ConfigurationManager.AppSettings["kv_key"];
 
+            Console.WriteLine($"{config_aad_appId}");
             Console.WriteLine($"{config_kv_dnsname}");
-            Console.WriteLine($"{config_kv_appId}");
             Console.WriteLine($"{config_kv_key}");
 
             // https://docs.microsoft.com/en-us/dotnet/api/overview/azure/key-vault?view=azure-dotnet
