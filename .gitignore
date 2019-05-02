@@ -21,6 +21,7 @@ src/SpeedyLead.Server/openapi
 *.userosscache
 *.sln.docstates
 **/packages/*
+**/Apps/packages/*
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
