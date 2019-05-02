@@ -1,4 +1,8 @@
-﻿# Refs
+﻿# --------------------------------------------------------------------------------------------------------------------------
+# http://tritoneco.com/2014/02/21/fix-for-powershell-script-not-digitally-signed/
+Set-ExecutionPolicy -ExecutionPolicy ByPass -Scope Process
+# --------------------------------------------------------------------------------------------------------------------------
+# Refs
 # https://docs.microsoft.com/en-us/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert
 # https://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/
 # https://medium.com/the-new-control-plane/generating-self-signed-certificates-on-windows-7812a600c2d8
