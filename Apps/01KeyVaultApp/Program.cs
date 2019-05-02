@@ -1,9 +1,10 @@
 using System;
-using AzureResourceReport.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure.KeyVault;
+//using AzureResourceReport.Models;
+//using Microsoft.Azure.Management.ResourceManager.Fluent;
+//using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 
 namespace _01KeyVaultApp
 {
@@ -18,12 +19,10 @@ namespace _01KeyVaultApp
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Hello World!");
             Console.ReadKey();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            
         }
     }
 }
