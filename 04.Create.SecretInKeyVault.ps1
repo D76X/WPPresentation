@@ -67,6 +67,30 @@ $secretname = "importantsecret1"
 # add the secure string to our new Key Vault
 $secret = Set-AzureKeyVaultSecret -VaultName $kvname -Name "importantsecret1" -SecretValue $secretvalue
 $secret.Id
+
+# --------------------------------------------------------------------------------------
+# Application Registration with Azure AD
+# Name : 01KeyVaultApp
+# Application(client) ID: 3da2ec55-4670-4e30-b7f2-6c4a29ec9a3f
+# Directory(tenant) ID : 981b07d1-b261-4c3e-a400-b86f7809d9bc
+# Object ID : 2458fef3-3247-4fb2-a3ab-e144b93d1818
+# Supported account types : My organization only
+# Redirect URIs :Add a Redirect URI
+# Managed application in local directory :01KeyVaultApp
+# --------------------------------------------------------------------------------------
+# # Application Registration with Azure AD - Create a new Key
+# Se also Certificates and Secrets tab
+# Application Secret (aka Client Secret)
+# /nKN++8?2m2LUUTdWva5bwcZHR__slTr
+# --------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------------------------------------------
+# https://stackoverflow.com/questions/2608144/how-to-split-long-commands-over-multiple-lines-in-powershell
+# Access Policies on Azure Key Vault
+$kvname = "wppres1kv1"
+(Get-AzureRmKeyVault -VaultName "wppres1kv1").AccessPolicies
 # set the access policy 
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'AddressBookPlusVault03' -ServicePrincipalName 386424df-c14a-4436-b872-f186ea2ddc98 -PermissionsToSecrets Get
+Set-AzureRmKeyVaultAccessPolicy -VaultName $kvname `
+-ServicePrincipalName 386424df-c14a-4436-b872-f186ea2ddc98 `
+-PermissionsToSecrets Get
 # ----------------------------------------------------------------------------------------------------------------------------
