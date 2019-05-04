@@ -87,7 +87,3 @@ namespace _01KeyVaultApp
         }               
     }
 }
-
-// https://docs.microsoft.com/en-us/dotnet/api/overview/azure/key-vault?view=azure-dotnet
-//var keyClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
-//await GetSecretAsync("https://YOURVAULTNAME.vault.azure.net/", "YourSecretKey");
