@@ -84,13 +84,29 @@ $secret.Id
 # /nKN++8?2m2LUUTdWva5bwcZHR__slTr
 # --------------------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------------------
+# Get or Set Access Policies on the Key Vault
 # ----------------------------------------------------------------------------------------------------------------------------
-# https://stackoverflow.com/questions/2608144/how-to-split-long-commands-over-multiple-lines-in-powershell
-# Access Policies on Azure Key Vault
-$kvname = "wppres1kv1"
-(Get-AzureRmKeyVault -VaultName "wppres1kv1").AccessPolicies
+# First Login to Azure Account to retrieve the TenantID
+Login-AzureRmAccount
+
+# Then connecto to Azure AD with teh right tenant (admin)
+# If not the permission to query Azure AD will not be available to the script
+# http://get-cmd.com/?p=4949
+Connect-AzureAD -TenantId "981b07d1-b261-4c3e-a400-b86f7809d9bc"
+Get-AzureADDomain
+Get-AzureADApplication -All:$true | Format-List
+
+Get-AzureADApplication -All:$true `
+| Select-Object -Property ObjectType, ObjectID, AppID ,DisplayName `
+| Format-List
+# ----------------------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------------------
 # set the access policy 
+$kvname = "wppres1kv1"
+$appID = "3da2ec55-4670-4e30-b7f2-6c4a29ec9a3f"
 Set-AzureRmKeyVaultAccessPolicy -VaultName $kvname `
--ServicePrincipalName 386424df-c14a-4436-b872-f186ea2ddc98 `
--PermissionsToSecrets Get
+-ServicePrincipalName $appID `
+-PermissionsToSecrets Get # add as many permissions as necessary
 # ----------------------------------------------------------------------------------------------------------------------------

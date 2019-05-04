@@ -10,52 +10,81 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace _01KeyVaultApp
 {
-    
-
     class Program
     {
-        static void Main(string[] args)
+        // the ID assigned to this app when registered an Azure ID
+        private static string AppId;
+        // a secret that was created on Azure ID when the application
+        // was registered - this can be revoked!
+        private static string ClientSecret;
+
+        // the URI to the Azure Key Vault that holds the Secret, Key or Certificate
+        // that the application needs to retrieve
+        private static string VaultResourceUri;        
+
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Start Application and get key vault values");
 
             // https://stackoverflow.com/questions/1189364/reading-settings-from-app-config-or-web-config-in-net
             string config_aad_appId = ConfigurationManager.AppSettings["aad_appId"];
             string config_aad_clientsecret = ConfigurationManager.AppSettings["aad_clientsecret"];
+            string config_kv_secret_uri = ConfigurationManager.AppSettings["kv_secret_uri"];
+            string config_kv_secret_uri_versioned = ConfigurationManager.AppSettings["kv_secret_uri_versioned"];
             string config_kv_dnsname = ConfigurationManager.AppSettings["kv_dnsname"];
-            string config_kv_key = ConfigurationManager.AppSettings["kv_key"];
 
-            Console.WriteLine($"{config_aad_appId}");
-            Console.WriteLine($"{config_kv_dnsname}");
-            Console.WriteLine($"{config_kv_key}");
+            Console.WriteLine();
+            Console.WriteLine($"{nameof(config_aad_appId)}={config_aad_appId}");
+            Console.WriteLine($"{nameof(config_aad_clientsecret)}={config_aad_clientsecret}");
+            Console.WriteLine($"{nameof(config_kv_secret_uri)}={config_kv_secret_uri}");
+            Console.WriteLine($"{nameof(config_kv_secret_uri_versioned)}={config_kv_secret_uri_versioned}");
+            Console.WriteLine($"{nameof(config_kv_dnsname)}={config_kv_dnsname}");
+            Console.WriteLine();
 
-            // https://docs.microsoft.com/en-us/dotnet/api/overview/azure/key-vault?view=azure-dotnet
-            //var keyClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
-            //await GetSecretAsync("https://YOURVAULTNAME.vault.azure.net/", "YourSecretKey");
+            AppId = config_aad_appId;
+            ClientSecret = config_aad_clientsecret;
+            VaultResourceUri = config_kv_secret_uri;
 
+            var secret = await GetSecretAsync(secretUri: VaultResourceUri);
+            Console.WriteLine($"{nameof(secret)}={secret}");
+            Console.WriteLine();
+
+            Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
 
         // https://stackoverflow.com/questions/47875589/cant-access-azure-key-vault-from-desktop-console-app
-        private static async Task<string> GetSecretAsync(string vaultUrl, string vaultKey)
+        private static async Task<string> GetSecretAsync(string secretUri)
         {
-            var client = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetAccessTokenAsync), new HttpClient());
-            var secret = await client.GetSecretAsync(vaultUrl, vaultKey);
+            var client = new KeyVaultClient(
+                authenticationCallback: new KeyVaultClient.AuthenticationCallback(GetAccessTokenAsync),
+                httpClient: new HttpClient());
+            
+            var secret = await client.GetSecretAsync(secretIdentifier: secretUri);           
 
             return secret.Value;
         }
 
-        private static async Task<string> GetAccessTokenAsync(string authority, string resource, string scope)
-        {
-            //DEMO ONLY
-            //Storing ApplicationId and Key in code is bad idea :)
-            var appCredentials = new ClientCredential("YourApplicationId", "YourApplicationKey");
-            var context = new AuthenticationContext(authority, TokenCache.DefaultShared);
+        /// <summary>
+        /// Authenticates with Azure AD and retrieves an access token 
+        /// for the resource that this application needs to access.
+        /// </summary>        
+        private static async Task<string> GetAccessTokenAsync(
+            string authority, 
+            string resource, 
+            string scope)
+        {            
+            var appClientCredentials = new ClientCredential(
+                clientId: AppId, 
+                clientSecret: ClientSecret);
 
-            var result = await context.AcquireTokenAsync(resource, appCredentials);
-
+            var autheticationContext = new AuthenticationContext(authority, TokenCache.DefaultShared);
+            var result = await autheticationContext.AcquireTokenAsync(resource, appClientCredentials);
             return result.AccessToken;
-        }
+        }               
     }
 }
 
-
+// https://docs.microsoft.com/en-us/dotnet/api/overview/azure/key-vault?view=azure-dotnet
+//var keyClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
+//await GetSecretAsync("https://YOURVAULTNAME.vault.azure.net/", "YourSecretKey");
