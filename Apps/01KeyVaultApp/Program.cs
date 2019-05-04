@@ -61,7 +61,7 @@ namespace _01KeyVaultApp
                 httpClient: new HttpClient());
             
             var secret = await client.GetSecretAsync(secretIdentifier: secretUri);           
-
+            
             return secret.Value;
         }
 
@@ -80,6 +80,9 @@ namespace _01KeyVaultApp
 
             var autheticationContext = new AuthenticationContext(authority, TokenCache.DefaultShared);
             var result = await autheticationContext.AcquireTokenAsync(resource, appClientCredentials);
+            var accessToken = result.AccessToken;
+            Console.WriteLine($"{nameof(accessToken)}={accessToken}");
+            Console.WriteLine();
             return result.AccessToken;
         }               
     }
