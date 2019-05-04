@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.KeyVault;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace _01KeyVaultApp
+namespace _02KeyVaultApp
 {
     class Program
     {
@@ -17,12 +17,12 @@ namespace _01KeyVaultApp
 
         // the URI to the Azure Key Vault that holds the Secret, Key or Certificate
         // that the application needs to retrieve
-        private static string VaultResourceUri;        
+        private static string VaultResourceUri;
 
         static async Task Main(string[] args)
         {
             Console.WriteLine($"Start Application {System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} and get key vault values");
-
+            
             // https://stackoverflow.com/questions/1189364/reading-settings-from-app-config-or-web-config-in-net
             string config_aad_appId = ConfigurationManager.AppSettings["aad_appId"];
             string config_aad_clientsecret = ConfigurationManager.AppSettings["aad_clientsecret"];
@@ -56,9 +56,9 @@ namespace _01KeyVaultApp
             var client = new KeyVaultClient(
                 authenticationCallback: new KeyVaultClient.AuthenticationCallback(GetAccessTokenAsync),
                 httpClient: new HttpClient());
-            
-            var secret = await client.GetSecretAsync(secretIdentifier: secretUri);           
-            
+
+            var secret = await client.GetSecretAsync(secretIdentifier: secretUri);
+
             return secret.Value;
         }
 
@@ -67,12 +67,12 @@ namespace _01KeyVaultApp
         /// for the resource that this application needs to access.
         /// </summary>        
         private static async Task<string> GetAccessTokenAsync(
-            string authority, 
-            string resource, 
+            string authority,
+            string resource,
             string scope)
-        {            
+        {
             var appClientCredentials = new ClientCredential(
-                clientId: AppId, 
+                clientId: AppId,
                 clientSecret: ClientSecret);
 
             var autheticationContext = new AuthenticationContext(authority, TokenCache.DefaultShared);
@@ -81,6 +81,6 @@ namespace _01KeyVaultApp
             Console.WriteLine($"{nameof(accessToken)}={accessToken}");
             Console.WriteLine();
             return result.AccessToken;
-        }               
+        }
     }
 }

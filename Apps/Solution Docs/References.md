@@ -1,4 +1,9 @@
 Refs
+
+NuGet Packages 
+Microsoft.Azure.KeyVault
+Microsoft.IdentityModel.Client.ActivaeDirectory (ADAL)
+
     https://damienbod.com/2019/02/07/using-azure-key-vault-from-an-non-azure-app/
     https://blog.bitscry.com/2019/02/13/using-azure-key-vault-in-a-console-application/
     https://azurecto.com/azure-keyvault-authenticating-with-certificates-and-reading-secrets/
