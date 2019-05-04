@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01KeyVaultApp", "01KeyVaultApp\01KeyVaultApp.csproj", "{7054DB5A-11B5-4EA5-922C-EE3F65E87295}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Docs", "Solution Docs", "{D7247BC9-2FE7-48EC-B3F1-9127445CDEC5}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Docs\References.md = Solution Docs\References.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

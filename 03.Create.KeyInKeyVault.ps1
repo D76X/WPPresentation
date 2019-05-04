@@ -6,6 +6,9 @@
 # Must log in some account
 Connect-AzureRmAccount
 
+# ----------------------------------------------------------------------------------------------------------------------------
+# Geat&SetSubscriptionContextForAzureAccount
+
 # Find the subscriptions forthe account you are logged on
 Get-AzureRmSubscription
 
@@ -24,6 +27,7 @@ $loc = "West Europe"
 New-AzureRmResourceGroup -Name $rgname -Location $loc
 #----------------------------------------------------------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------------------------------------------------------
 # creating a new Azure Key Vault
 # https://app.pluralsight.com/player?course=microsoft-azure-data-securing&author=reza-salehi&name=83d87507-3bef-4754-a046-46980dbdfc55&clip=3&mode=live
 $kvname = "wppres1kv1"
@@ -33,6 +37,7 @@ New-AzureRmKeyVault -VaultName 'wppres1kv1' -ResourceGroupName $rgname -Location
 # VaultName  : wppres1kv1
 #----------------------------------------------------------------------------------------------------------------------------
 
+# ----------------------------------------------------------------------------------------------------------------------------
 # https://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/
 # https://understandingazure.com/creating-and-importing-encryption-keys-with-azure-key-vault/
 # --------------------------------------------------------------------------------------------------------------------------

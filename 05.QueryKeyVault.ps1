@@ -12,7 +12,8 @@ Get-AzureRmKeyVault
 #TagsTable         : 
 
 #----------------------------------------------------------------------------------------------------------------------------
-Get-AzureRMKeyVault -VaultName 'wppres1kv1'
+# all info on the key vault and its access policies
+Get-AzureRmKeyVault -VaultName 'wppres1kv1'
 #----------------------------------------------------------------------------------------------------------------------------
 # ResourceId                   : /subscriptions/df17c9fe-de76-4143-bbae-77b75fa0705b/resourceGroups/wppres1rg1/providers/Microsoft.KeyVault/vaults/wppres1kv1
 
@@ -21,12 +22,13 @@ Get-AzureRmKeyVault -ResourceGroupName 'wppres1rg1'
 Get-AzureRmKeyVault -InRemovedState
 Get-AzureRMKeyVault -VaultName 'wppres1kv1'  -Location 'westeurope' -InRemovedState
 
-
+#----------------------------------------------------------------------------------------------------------------------------
 # Query for Secrets, Certificates & Keys
 # https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret?view=azurermps-6.13.0
 Get-AzureKeyVaultSecret -VaultName 'wppres1kv1'
 Get-AzureKeyVaultCertificate -VaultName 'wppres1kv1'
 Get-AzureKeyVaultKey -VaultName 'wppres1kv1'
+#----------------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------------
 # Query for Secrets, Certificates & Keys with versions
