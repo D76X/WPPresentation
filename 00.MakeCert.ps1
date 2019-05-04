@@ -60,3 +60,12 @@ makecert -sv MyPrivateKey.pvk -n "cn=CertificateSubject" MyPublicKey.cer -b 05/0
 # This command puts the CER and PVK together
 pvk2pfx -pvk MyPrivateKey.pvk -spc MyPublicKey.cer -pfx MyCertificate.pfx -po password 
 #-------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------
+# Create a certificate for the 02KeyVaultApp Demo
+# This command prompts for teh psw to secure the private key file
+makecert -sv 02KeyVaultApp.pvk -n "cn=02KeyVaultApp" 02KeyVaultApp.cer -b 05/04/2019 -e 05/04/2020 -r
+# This command puts the CER and PVK together
+pvk2pfx -pvk 02KeyVaultApp.pvk -spc 02KeyVaultApp.cer -pfx 02KeyVaultApp.pfx -po password 
+#-------------------------------------------------------------------------------------------------------
