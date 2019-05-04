@@ -13,7 +13,7 @@ namespace _02KeyVaultApp
         private static string AppId;
         // a secret that was created on Azure ID when the application
         // was registered - this can be revoked!
-        private static string ClientSecret;
+        //private static string ClientSecret;
 
         // the URI to the Azure Key Vault that holds the Secret, Key or Certificate
         // that the application needs to retrieve
@@ -39,7 +39,7 @@ namespace _02KeyVaultApp
             Console.WriteLine();
 
             AppId = config_aad_appId;
-            ClientSecret = config_aad_clientsecret;
+            //ClientSecret = config_aad_clientsecret;
             VaultResourceUri = config_kv_secret_uri;
 
             var secret = await GetSecretAsync(secretUri: VaultResourceUri);
