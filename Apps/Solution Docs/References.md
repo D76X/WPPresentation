@@ -1,27 +1,44 @@
-Refs
 
-NuGet Packages 
-Microsoft.Azure.KeyVault
-Microsoft.IdentityModel.Client.ActivaeDirectory (ADAL)
+---
 
-    https://damienbod.com/2019/02/07/using-azure-key-vault-from-an-non-azure-app/
-    https://blog.bitscry.com/2019/02/13/using-azure-key-vault-in-a-console-application/
-    https://azurecto.com/azure-keyvault-authenticating-with-certificates-and-reading-secrets/
-    https://stackoverflow.com/questions/47875589/cant-access-azure-key-vault-from-desktop-console-app
-    https://docs.microsoft.com/en-us/azure/key-vault/tutorial-net-create-vault-azure-web-app
-    https://github.com/damienbod/AspNetCoreBackChannelLogout/blob/master/ConsoleStandaloneUsingAzureSecrets/Program.cs
+## NuGet Packages 
 
-    https://docs.microsoft.com/en-us/azure/key-vault/tutorial-net-create-vault-azure-web-app
+The projects in this solution make use of the following nuget packages which must be installed in each project that needs them.
 
-    //{
-    //"DNSNameKeyVault": "<DNS NAME from Key Vault>",
-    //"AADAppRegistrationAppId": "<Azure AD App Registration Application ID>",
-    //"AADAppRegistrationAppSecret": "<Azure AD App Registration Application Secret>",
-    //"SomeSecret": "DEV_VALUE"
-    //}
+- Microsoft.Azure.KeyVault
+- Microsoft.IdentityModel.Client.ActivaeDirectory (ADAL)
 
-//--------------------------------------------------------------------------------------
+---
+
+## C# 7.x Language Features
+
+Some of the console applications in this solution make use of some of the C# language features available only for version of the language starting from 7.1. i.e. the **async main** entry method. 
+
+When a new console application based on the full .Net Framework is added to the solution from the Visual Studio preinstalled project template the default language feature might be set to a version preceding C# 7.1 and if any of the later language features are employed in the code the compiler might fail and issue corresponding warning. 
+
+**In order to change the language version for a project do the the following**.
+
+1. Select the project in the Solution Explorer and then properties.
+2. In the build tab click on the **Advanced...** button.
+3. Ser the **Language version** to the required level.
+
+---
+
+## Some References 
+
+https://damienbod.com/2019/02/07/using-azure-key-vault-from-an-non-azure-app/  
+https://blog.bitscry.com/2019/02/13/using-azure-key-vault-in-a-console-application/  
+https://azurecto.com/azure-keyvault-authenticating-with-certificates-and-reading-secrets/  
+https://stackoverflow.com/questions/47875589/cant-access-azure-key-vault-from-desktop-console-app  
+https://docs.microsoft.com/en-us/azure/key-vault/tutorial-net-create-vault-azure-web-app  
+https://github.com/damienbod/AspNetCoreBackChannelLogout/blob/master/ConsoleStandaloneUsingAzureSecrets/Program.cs
+https://docs.microsoft.com/en-us/azure/key-vault/tutorial-net-create-vault-azure-web-app  
+
+----------------------------------------------------------------------------------------
+
+
 Application Registration
+
 https://damienbod.com/2019/02/07/using-azure-key-vault-from-an-non-azure-app/
 https://stackoverflow.com/questions/47875589/cant-access-azure-key-vault-from-desktop-console-app
 01KeyVaultApp
