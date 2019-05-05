@@ -107,3 +107,10 @@ EndIpAddress      : 255.255.255.255
 FirewallRuleName  : AdminFirewallRule
 #>
 # ----------------------------------------------------------------------------------------------------------------------------
+
+
+# Connect as admin to the Azure SQL Instance
+# three pieces of info are required
+# username : as set
+# password : as set
+# servername : From Azure portal wppres1sqlserver1 => wppres1sqlserver1.database.windows.net 
