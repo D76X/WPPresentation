@@ -24,6 +24,7 @@ $resourceGroupName = "wppres1rg1"
 $location = "West Europe"          # Geographic location to store everything
 $storageAccountName = 'wppres1sa1' # Name of the storage account
 $containerName = 'wppressa1cont1'  # Name of container inside storage account
+# ----------------------------------------------------------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------------------------------------------------------
 # Create the resource group, if needed
@@ -49,7 +50,11 @@ Id                     : /subscriptions/df17c9fe-de76-4143-bbae-77b75fa0705b/re
 #>
 # ----------------------------------------------------------------------------------------------------------------------------
 
-
 # ----------------------------------------------------------------------------------------------------------------------------
-
+# Create the Storage Container, if needed
+# use imported custom function New-PSStorageContainer
+$container = New-PSStorageContainer -ContainerName $containerName `
+                                    -ResourceGroupName $resourceGroupName `
+                                    -StorageAccountName $storageAccountName `
+                                    -Verbose
 # ----------------------------------------------------------------------------------------------------------------------------
