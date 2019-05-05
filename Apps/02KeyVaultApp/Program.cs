@@ -28,7 +28,6 @@ namespace _02KeyVaultApp
         {
             Console.WriteLine($"Start Application {System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} and get key vault values");
             
-            // https://stackoverflow.com/questions/1189364/reading-settings-from-app-config-or-web-config-in-net
             string config_aad_appId = ConfigurationManager.AppSettings["aad_appId"];
             string config_pfxthumbprint = ConfigurationManager.AppSettings["pfxthumbprint"];
             string config_kv_secret_uri = ConfigurationManager.AppSettings["kv_secret_uri"];
