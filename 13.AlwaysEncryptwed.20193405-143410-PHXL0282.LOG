@@ -1,0 +1,63 @@
+May 5 2019 14:34:10: Log opened. TraceLevel:Informational
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:Source database settings.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	Source server name: wppres1sqlserver1.database.windows.net.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	Source database name: wppres1db1.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:Generate PowerShell script.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	Script location: C:\Users\pb00270\Source\Repos\WPPresentation\.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	Script name: 12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:Create new master key.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	New master key name: CMK_Auto1.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	New master key in Azure Key Vault\\wppres1kv2.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:Create new encryption key.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	New encryption key: CEK_Auto1.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:Encrypt column SSNE.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	  Table name: People.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	  Encryption key name: CEK_Auto1.
+
+May 5 2019 14:39:24 [Informational] WizardSummary: Message:	  Encryption type: Deterministic.
+
+May 5 2019 14:39:29 [Informational] WorkitemExecution: Message:Work item 'Generate new column master key CMK_Auto1 in Azure Key Vault wppres1kv2' started..
+
+May 5 2019 14:39:29 [Informational] TaskUpdates: Message:Task: 'Generate new column master key CMK_Auto1 in Azure Key Vault wppres1kv2' -- Status: 'Started' -- Details: 'Task 'Generate new column master key CMK_Auto1 in Azure Key Vault wppres1kv2' started ....'.
+
+May 5 2019 14:39:39 [Informational] TaskUpdates: Message:Task: 'Generate new column master key CMK_Auto1 in Azure Key Vault wppres1kv2' -- Status: 'Completed' -- Details: 'Task 'Generate new column master key CMK_Auto1 in Azure Key Vault wppres1kv2' completed'.
+
+May 5 2019 14:39:39 [Informational] WorkitemExecution: Message:Work item 'Generate new column master key CMK_Auto1 in Azure Key Vault wppres1kv2' stopped..
+
+May 5 2019 14:39:39 [Informational] WorkitemExecution: Message:Work item 'Generate new column master key CMK_Auto1 in Azure Key Vault wppres1kv2' completed successfully!.
+
+May 5 2019 14:39:39 [Informational] WorkitemExecution: Message:Work item 'Generate new column encryption key CEK_Auto1' started..
+
+May 5 2019 14:39:39 [Informational] TaskUpdates: Message:Task: 'Generate new column encryption key CEK_Auto1' -- Status: 'Started' -- Details: 'Task 'Generate new column encryption key CEK_Auto1' started ....'.
+
+May 5 2019 14:39:41 [Informational] TaskUpdates: Message:Task: 'Generate new column encryption key CEK_Auto1' -- Status: 'Completed' -- Details: 'Task 'Generate new column encryption key CEK_Auto1' completed'.
+
+May 5 2019 14:39:41 [Informational] WorkitemExecution: Message:Work item 'Generate new column encryption key CEK_Auto1' stopped..
+
+May 5 2019 14:39:41 [Informational] WorkitemExecution: Message:Work item 'Generate new column encryption key CEK_Auto1' completed successfully!.
+
+May 5 2019 14:39:41 [Informational] WorkitemExecution: Message:Work item 'Generate PowerShell script C:\Users\pb00270\Source\Repos\WPPresentation\12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1' started..
+
+May 5 2019 14:39:41 [Informational] TaskUpdates: Message:Task: 'Generate PowerShell script C:\Users\pb00270\Source\Repos\WPPresentation\12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1' -- Status: 'Started' -- Details: 'Task 'Generate PowerShell script C:\Users\pb00270\Source\Repos\WPPresentation\12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1' started ....'.
+
+May 5 2019 14:39:41 [Informational] TaskUpdates: Message:Task: 'Generate PowerShell script C:\Users\pb00270\Source\Repos\WPPresentation\12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1' -- Status: 'Completed' -- Details: 'Task 'Generate PowerShell script C:\Users\pb00270\Source\Repos\WPPresentation\12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1' completed'.
+
+May 5 2019 14:39:41 [Informational] WorkitemExecution: Message:Work item 'Generate PowerShell script C:\Users\pb00270\Source\Repos\WPPresentation\12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1' stopped..
+
+May 5 2019 14:39:41 [Informational] WorkitemExecution: Message:Work item 'Generate PowerShell script C:\Users\pb00270\Source\Repos\WPPresentation\12.AlwayEncrypted.ScriptGeneratedBySSMS.ps1' completed successfully!.
+
+May 5 2019 14:39:41 [Informational] Log Closed: Message:Job processing completed.
+
