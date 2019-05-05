@@ -10,6 +10,14 @@ The projects in this solution make use of the following nuget packages which mus
 
 ---
 
+## Assembly References
+
+The following assembly references may have been used. 
+
+- System.Configuration
+
+---
+
 ## C# 7.x Language Features
 
 Some of the console applications in this solution make use of some of the C# language features available only for version of the language starting from 7.1. i.e. the **async main** entry method. 

@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02KeyVaultApp", "02KeyVault
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00BadApp", "00BadApp\00BadApp.csproj", "{5A3D55F9-8F7B-45D0-9EED-377D73C67820}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03KeyVaultApp", "03KeyVaultApp\03KeyVaultApp.csproj", "{4CE957F2-9899-47AB-8C87-48488CD2E43C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{5A3D55F9-8F7B-45D0-9EED-377D73C67820}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A3D55F9-8F7B-45D0-9EED-377D73C67820}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A3D55F9-8F7B-45D0-9EED-377D73C67820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE957F2-9899-47AB-8C87-48488CD2E43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE957F2-9899-47AB-8C87-48488CD2E43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE957F2-9899-47AB-8C87-48488CD2E43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE957F2-9899-47AB-8C87-48488CD2E43C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
