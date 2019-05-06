@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00BadApp", "00BadApp\00BadA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03KeyVaultApp", "03KeyVaultApp\03KeyVaultApp.csproj", "{4CE957F2-9899-47AB-8C87-48488CD2E43C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01AlwaysEncryptedApp", "01AlwaysEncryptedApp\01AlwaysEncryptedApp.csproj", "{285D1A5E-A766-4585-A3D3-0F8246C9CBFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02AlwaysEncryptedApp", "02AlwaysEncryptedApp\02AlwaysEncryptedApp.csproj", "{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{4CE957F2-9899-47AB-8C87-48488CD2E43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CE957F2-9899-47AB-8C87-48488CD2E43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CE957F2-9899-47AB-8C87-48488CD2E43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285D1A5E-A766-4585-A3D3-0F8246C9CBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{285D1A5E-A766-4585-A3D3-0F8246C9CBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{285D1A5E-A766-4585-A3D3-0F8246C9CBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{285D1A5E-A766-4585-A3D3-0F8246C9CBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
