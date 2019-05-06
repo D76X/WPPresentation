@@ -1,0 +1,77 @@
+May 5 2019 14:50:49: Log opened. TraceLevel:Informational
+May 5 2019 14:51:24 [Informational] WizardSummary: Message:Source database settings.
+
+May 5 2019 14:51:24 [Informational] WizardSummary: Message:	Source server name: wppres1sqlserver1.database.windows.net.
+
+May 5 2019 14:51:24 [Informational] WizardSummary: Message:	Source database name: wppres1db1.
+
+May 5 2019 14:51:24 [Informational] WizardSummary: Message:Encrypt column SSNE.
+
+May 5 2019 14:51:24 [Informational] WizardSummary: Message:	  Table name: People.
+
+May 5 2019 14:51:24 [Informational] WizardSummary: Message:	  Encryption key name: CEK_Auto1.
+
+May 5 2019 14:51:24 [Informational] WizardSummary: Message:	  Encryption type: Deterministic.
+
+May 5 2019 14:51:26 [Informational] WorkitemExecution: Message:Work item 'Performing encryption operations' started..
+
+May 5 2019 14:51:26 [Informational] TaskUpdates: Message:Task: 'Performing encryption operations' -- Status: 'Started' -- Details: 'Task 'Performing encryption operations' started ....'.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Pending: Initializing deployment.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Pending: Analyzing deployment plan.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Pending: Updating database.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Pending: Creating deployment plan.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Pending: Verifying deployment plan.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Pending: Deploying package to database.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Running: Creating deployment plan.
+
+May 5 2019 14:55:16 [Informational] DacFxMigration: Message:DacFx state update: Running: Initializing deployment.
+
+May 5 2019 14:59:00 [Informational] DacFxMigration: Message:DacFx state update: Completed: Initializing deployment.
+
+May 5 2019 14:59:00 [Informational] DacFxMigration: Message:DacFx state update: Completed: Creating deployment plan.
+
+May 5 2019 14:59:00 [Informational] DacFxMigration: Message:DacFx state update: Running: Verifying deployment plan.
+
+May 5 2019 14:59:00 [Informational] DacFxMigration: Message:DacFx state update: Running: Analyzing deployment plan.
+
+May 5 2019 14:59:01 [Informational] DacFxMigration: Message:DacFx state update: Completed: Analyzing deployment plan.
+
+May 5 2019 14:59:01 [Informational] DacFxMigration: Message:DacFx state update: Completed: Verifying deployment plan.
+
+May 5 2019 14:59:01 [Informational] DacFxMigration: Message:DacFx state update: Running: Deploying package to database.
+
+May 5 2019 14:59:01 [Informational] DacFxMigration: Message:DacFx state update: Running: Updating database.
+
+May 5 2019 14:59:11 [Informational] DacFxMigration: Message:Data migration for table '[dbo].[People]' started..
+
+May 5 2019 14:59:11 [Informational] DacFxMigration: Message:DacFx state update: Running: Processing Export..
+
+May 5 2019 14:59:11 [Informational] DacFxMigration: Message:DacFx state update: Pending: Processing Table '[dbo].[People]'..
+
+May 5 2019 14:59:12 [Informational] DacFxMigration: Message:DacFx state update: Running: Processing Table '[dbo].[People]'..
+
+May 5 2019 14:59:14 [Informational] DacFxMigration: Message:Processing Table '[dbo].[People]'. 100.00% done..
+
+May 5 2019 14:59:14 [Informational] DacFxMigration: Message:DacFx state update: Completed: Processing Table '[dbo].[People]'..
+
+May 5 2019 14:59:14 [Informational] DacFxMigration: Message:DacFx state update: Completed: Processing Export..
+
+May 5 2019 14:59:18 [Informational] DacFxMigration: Message:DacFx state update: Completed: Updating database.
+
+May 5 2019 14:59:18 [Informational] DacFxMigration: Message:DacFx state update: Completed: Deploying package to database.
+
+May 5 2019 14:59:18 [Informational] TaskUpdates: Message:Task: 'Performing encryption operations' -- Status: 'Completed' -- Details: 'Task 'Performing encryption operations' completed'.
+
+May 5 2019 14:59:18 [Informational] WorkitemExecution: Message:Work item 'Performing encryption operations' stopped..
+
+May 5 2019 14:59:18 [Informational] WorkitemExecution: Message:Work item 'Performing encryption operations' completed successfully!.
+
+May 5 2019 14:59:18 [Informational] Log Closed: Message:Job processing completed.
+
