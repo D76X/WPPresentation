@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01AlwaysEncryptedApp", "01A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02AlwaysEncryptedApp", "02AlwaysEncryptedApp\02AlwaysEncryptedApp.csproj", "{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04WebApp", "04WebApp\04WebApp.csproj", "{AEA468D8-ED3B-42C9-B048-896D4592E01B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04WebApp", "04WebApp\04WebApp.csproj", "{1E0C0E5D-BC90-4EA1-98B2-70B4186824E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +52,10 @@ Global
 		{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FC0BF0A-590C-4FF8-A2D2-75824205A0F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AEA468D8-ED3B-42C9-B048-896D4592E01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEA468D8-ED3B-42C9-B048-896D4592E01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AEA468D8-ED3B-42C9-B048-896D4592E01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AEA468D8-ED3B-42C9-B048-896D4592E01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E0C0E5D-BC90-4EA1-98B2-70B4186824E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E0C0E5D-BC90-4EA1-98B2-70B4186824E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E0C0E5D-BC90-4EA1-98B2-70B4186824E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E0C0E5D-BC90-4EA1-98B2-70B4186824E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
