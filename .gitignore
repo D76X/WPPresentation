@@ -22,6 +22,10 @@ src/SpeedyLead.Server/openapi
 *.sln.docstates
 **/packages/*
 **/Apps/packages/*
+**/Apps/04WebApp
+**/Apps/04WebApp/*
+**/Apps/05WebApp
+**/Apps/05WebApp/*
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
