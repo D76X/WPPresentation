@@ -96,7 +96,16 @@ Get-AzureRmADApplication -DisplayName $appServiceName
 
 # with the ApplicationId
 Get-AzureRmADServicePrincipal -ApplicationId 9fc8020f-0a8b-4938-aea4-6168c00e5eef
-
+# ------------------------------------------------------------
+<#
+ServicePrincipalNames : {https://davidespanoxgmail.onmicrosoft.com/04WebApp_201
+                        90511300129, 9fc8020f-0a8b-4938-aea4-6168c00e5eef}
+ApplicationId         : 9fc8020f-0a8b-4938-aea4-6168c00e5eef
+DisplayName           : 04WebApp
+Id                    : c9a09003-0e7b-4001-8207-d0273be7f6b0
+AdfsId                : 
+Type                  : ServicePrincipal
+#>
 # ------------------------------------------------------------
 
 # ------------------------------------------------------------
