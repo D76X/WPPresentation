@@ -16,12 +16,43 @@ Connect-AzureRmAccount
 
 #------------------------------------------------------------------------------
 
+# Refs
+# https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-quick-create-vm-windows-powershell
+
+#------------------------------------------------------------------------------
+
+# Step 1 - Create storage resources
+
 $resourceGroupName = "wppres1rg1"
 $location = "West Europe"
-$StorageAccountForVMs = "wppres1sa2"
-# https://docs.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage
-$skuName = "Standard_LRS"
+$storageAccountName = "wppres1sa2"
+$storageAccountSkuName = "Standard_LRS" # https://docs.microsoft.com/en-us/rest/api/storagerp/skus/list
 
+# Create a new storage account
+$storageAccount = New-AzureRMStorageAccount `
+  -Location $location `
+  -ResourceGroupName $resourceGroupName `
+  -Type $storageAccountSkuName `
+  -Name $storageAccountName
+
+# modifies the current Azure Storage account of the specified Azure subscription in Azure PowerShell. 
+# The current Storage account is used as the default when you access Storage without specifying a 
+# Storage account name
+Set-AzureRmCurrentStorageAccount `
+  -StorageAccountName $storageAccountName `
+  -ResourceGroupName $resourceGroupName
+
+# -----------------------------------------------------------------------------
+
+# Step 1 - Create networking resources
+
+
+# -----------------------------------------------------------------------------
+
+# https://docs.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage
+$vmSkuName = '2016-Datacenter'
+
+# -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 
 #Enable the Azure Key Vault provider within your Azure subscription
