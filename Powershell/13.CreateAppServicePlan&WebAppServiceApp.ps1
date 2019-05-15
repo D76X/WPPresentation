@@ -11,7 +11,7 @@ Set-AzureRmContext -Subscription "df17c9fe-de76-4143-bbae-77b75fa0705b"
 $resourceGroupName = "wppres1rg1"
 $location = "West Europe"          
 $appServicePlanName = "wpserviceplan1"
-$appServiceName ="04WebApp"
+$appServiceName ="05WebApp"
 
 New-AzureRmAppServicePlan -ResourceGroupName $resourceGroupName `
 -Location $location `
@@ -95,7 +95,8 @@ Get-AzureRmADApplication
 Get-AzureRmADApplication -DisplayName $appServiceName 
 
 # with the ApplicationId
-Get-AzureRmADServicePrincipal -ApplicationId 9fc8020f-0a8b-4938-aea4-6168c00e5eef
+Get-AzureRmADServicePrincipal -ApplicationId 9fc8020f-0a8b-4938-aea4-6168c00e5eef #04WebApp
+Get-AzureRmADServicePrincipal -ApplicationId 0f5f7e97-04a3-471a-a4e4-eb845a06ce78 #05WebApp
 # ------------------------------------------------------------
 <#
 ServicePrincipalNames : {https://davidespanoxgmail.onmicrosoft.com/04WebApp_201

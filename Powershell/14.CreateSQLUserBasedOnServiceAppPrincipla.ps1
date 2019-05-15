@@ -10,8 +10,12 @@ $appServiceName ="04WebApp"
 Get-AzureRmADApplication
 Get-AzureRmADApplication -DisplayName $appServiceName 
 
+# --------------------------------------------------------------------------------
+#04WebApp
 # with the ApplicationId
-Get-AzureRmADServicePrincipal -ApplicationId 9fc8020f-0a8b-4938-aea4-6168c00e5eef
+Get-AzureRmADServicePrincipal -ApplicationId 9fc8020f-0a8b-4938-aea4-6168c00e5eef 
+# ObjectId : c9a09003-0e7b-4001-8207-d0273be7f6b0
+
 # ------------------------------------------------------------
 <#
 ServicePrincipalNames : {https://davidespanoxgmail.onmicrosoft.com/04WebApp_201
@@ -24,11 +28,35 @@ Type                  : ServicePrincipal
 #>
 # ------------------------------------------------------------
 
+# --------------------------------------------------------------------------------
+#05WebApp
+Get-AzureRmADServicePrincipal -ApplicationId 0f5f7e97-04a3-471a-a4e4-eb845a06ce78 
+# ObjectId : 368b14db-4c3f-4bd1-9853-63edcbc6ce6b
+
+# ------------------------------------------------------------
+<#
+ServicePrincipalNames : {https://davidespanoxgmail.onmicrosoft.com/05WebApp, 
+                        0f5f7e97-04a3-471a-a4e4-eb845a06ce78}
+ApplicationId         : 0f5f7e97-04a3-471a-a4e4-eb845a06ce78
+DisplayName           : 05WebApp
+Id                    : 1f4cf6bb-098c-4f0e-a4de-a44c6a76f46e
+AdfsId                : 
+Type                  : ServicePrincipal
+#>
+# ------------------------------------------------------------
+
+# --------------------------------------------------------------------------------
+
+
+
+# This creates the necessary log in in the master database on the server
 # This is the command in AzureCLI run on the portal
+
+#04WebApp
 az sql server ad-admin create --resource-group wppres1rg1 --server-name wppres1sqlserver1 --display-name msiadmin --object-id c9a09003-0e7b-4001-8207-d0273be7f6b0
 
+# -----------------------------------------------------
 # and I got back this
-
 <#
 {
   "id": "/subscriptions/df17c9fe-de76-4143-bbae-77b75fa0705b/resourceGroups/wppres1rg1/providers/Microsoft.Sql/servers/wppres1sqlserver1/administratorOperationResults/ActiveDirectory",
@@ -42,6 +70,27 @@ az sql server ad-admin create --resource-group wppres1rg1 --server-name wppres1s
   "type": "Microsoft.Sql/servers/administrators"
 }
 #>
+# -----------------------------------------------------
+
+#05WebApp
+az sql server ad-admin create --resource-group wppres1rg1 --server-name wppres1sqlserver1 --display-name msiadmin05 --object-id 1f4cf6bb-098c-4f0e-a4de-a44c6a76f46e
+
+# -----------------------------------------------------
+# and I got back this
+<#
+{
+  "id": "/subscriptions/df17c9fe-de76-4143-bbae-77b75fa0705b/resourceGroups/wppres1rg1/providers/Microsoft.Sql/servers/wppres1sqlserver1/administratorOperationResults/ActiveDirectory",
+  "kind": null,
+  "location": "West Europe",
+  "login": "msiadmin05",
+  "name": "ActiveDirectory",
+  "resourceGroup": "wppres1rg1",
+  "sid": "1f4cf6bb-098c-4f0e-a4de-a44c6a76f46e",
+  "tenantId": "981b07d1-b261-4c3e-a400-b86f7809d9bc",
+  "type": "Microsoft.Sql/servers/administrators"
+}
+#>
+# -----------------------------------------------------
 
 # This can be seen in the portal in the Active Directory Admin blade
 # of the SQL Server Instance

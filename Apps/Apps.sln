@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02AlwaysEncryptedApp", "02A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04WebApp", "04WebApp\04WebApp.csproj", "{35F0961E-307D-4752-A166-1D48BEF036DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05WebApp", "05WebApp\05WebApp.csproj", "{DB754F5E-DC86-4B04-AE6B-BD9B975FE15C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{35F0961E-307D-4752-A166-1D48BEF036DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35F0961E-307D-4752-A166-1D48BEF036DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35F0961E-307D-4752-A166-1D48BEF036DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB754F5E-DC86-4B04-AE6B-BD9B975FE15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB754F5E-DC86-4B04-AE6B-BD9B975FE15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB754F5E-DC86-4B04-AE6B-BD9B975FE15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB754F5E-DC86-4B04-AE6B-BD9B975FE15C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
