@@ -14,6 +14,11 @@ Get-Module AzureAD -ListAvailable | Select-Object -Property Name,Version,Path
 #connect to Azure
 Connect-AzureRmAccount
 
+# --------------------------------------------------------------------------------
+# Create a VM
+# --------------------------------------------------------------------------------
+
+
 #------------------------------------------------------------------------------
 
 # Refs
@@ -188,46 +193,94 @@ IpAddress
 # RDP into it 
 mstsc /v 51.136.54.10 
 
-# -----------------------------------------------------------------------------
-# -----------------------------------------------------------------------------
+# --------------------------------------------------------------------------------
+# Enable Azure Disk Encryption on the VM
+# --------------------------------------------------------------------------------
 
-#Enable the Azure Key Vault provider within your Azure subscription
-$rgName = "DEDemoResourceGroup"
-$location = "East US"
-New-AzureRmResourceGroup -Location "East US" -Name $rgName
+$resourceGroupName = "wppres1rg1"
+$location = "West Europe"
+
+# --------------------------------------------------------------------------------
+
+# Registers a resource provider - in this case the RP for Azure Key Vault
+
+# https://github.com/Azure/azure-resource-provider-sdk/blob/master/docs/concepts.md
+# A Resource Provider (RP) is an HTTPS RESTful API contract that implements a trusted Azure endpoint to
+# provision, delete and manage services on a user's behalf.
 
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 
-#create a new Key Vault
-$keyVaultName = "myDEKeyVaultName"
+# --------------------------------------------------------------------------------
+
+#Enable the Azure Key Vault provider within your Azure subscription
+
+# ---------------------------------------------
+#create a new Key Vault OR...
+$keyVaultName = "wppres1kv1"
 New-AzureRmKeyVault -Location $location `
-    -ResourceGroupName $rgName `
+    -ResourceGroupName $resourceGroupName  `
     -VaultName $keyVaultName `
     -EnabledForDiskEncryption
+# ---------------------------------------------
 
-#Create a cryptographic key
+# --------------------------------------------
+#..OR make usre that ADE is enabled on it
+Set-AzureRmKeyVaultAccessPolicy `
+    -ResourceGroupName $resourceGroupName  `
+    -VaultName $keyVaultName `
+    -EnabledForDiskEncryption
+# ---------------------------------------------
+
+# --------------------------------------------------------------------------------
+
+# Create a cryptographic key to be used for ADE on the VM
+# The "Software" option saves the key as encrypted value in Azure but not on an HSM
+$keyName = "vm1adekey1"
 Add-AzureKeyVaultKey -VaultName $keyVaultName `
-    -Name "myDEKey" `
+    -Name $keyName `
     -Destination "Software"
 
-#When virtual disks are encrypted or decrypted, you specify an account to handle the authentication and exchanging of 
+# ---------------------------------------------------------------------------------------------------------------------------
+
+# When virtual disks are encrypted or decrypted, you specify an account to handle the authentication and exchanging of 
 # cryptographic keys from Key Vault. This account, an Azure Active Directory service principal, allows the Azure platform
 # to request the appropriate cryptographic keys on behalf of the VM. A default Azure Active Directory instance is available
 # in your subscription, though many organizations have dedicated Azure Active Directory directories.
-$appName = "My DE Demo App"
+
+# ---------------------------------------------------------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------------
+
+$appName = "AppUsedToRetrieveADEkeyForVM1"
 $securePassword = ConvertTo-SecureString -String "P@ssw0rd!" -AsPlainText -Force
+
+# an application in Azure AD
 $app = New-AzureRmADApplication -DisplayName $appName `
-    -HomePage "https://myaddressbookplus.azurewebsites.net" `
-    -IdentifierUris "https://myaddressbookplus.azurewebsites.net/contact" `
-    -Password $securePassword
+    -HomePage "https://adekeyaccessappvm1.azurewebsites.net" `
+    -IdentifierUris "https://adekeyaccessappvm1.azurewebsites.net/contact" `
+    -Password $securePassword ` 
+    
+
+# once Azure AD has knows that the app exists we ask it to generate a Managed Identity 
+# for it. The VM will make use of this Principal in order to read the encrypotion key
+# from the KeyVault
+
 New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
 
-#o successfully encrypt or decrypt virtual disks, permissions on the cryptographic key stored in Key Vault must be set 
-# to permit the Azure Active Directory service principal to read the keys.
+# --------------------------------------------------------------------------------
+
+# Establish an Access Policy for the app to the KeyVault
+
+# to successfully encrypt or decrypt virtual disks, permissions on the cryptographic 
+# key stored in Key Vault must be set to allow the Azure Active Directory service 
+# principal to read the keys.
+
 Set-AzureRmKeyVaultAccessPolicy -VaultName $keyvaultName `
     -ServicePrincipalName $app.ApplicationId `
     -PermissionsToKeys "WrapKey" `
     -PermissionsToSecrets "Set"
+
+# --------------------------------------------------------------------------------
 
 #To test the encryption process, create a VM
 $cred = Get-Credential
@@ -246,13 +299,17 @@ New-AzureRmVm `
     -Credential $cred
 #>
 
-#To encrypt the virtual disks, you bring together all the previous components:
-$keyVault = Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
+# --------------------------------------------------------------------------------
+
+# To encrypt the virtual disks, you bring together all the previous resources
+# in a single command
+
+$keyVault = Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName  $resourceGroupName;
 $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 $keyVaultResourceId = $keyVault.ResourceId;
-$keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name 'myDEKey').Key.kid;
+$keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $keyName).Key.kid;
 
-Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
+Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName `
     -VMName $vmName `
     -AadClientID $app.ApplicationId `
     -AadClientSecret (New-Object PSCredential "user",$securePassword).GetNetworkCredential().Password `
@@ -261,8 +318,13 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
     -KeyEncryptionKeyUrl $keyEncryptionKeyUrl `
     -KeyEncryptionKeyVaultId $keyVaultResourceId
 
+# --------------------------------------------------------------------------------
+
+
 # review the encryption status
-Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName $vmName
+Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $resourceGroupName -VMName $vmName
+
+# --------------------------------------------------------------------------------
 
 #OsVolumeEncrypted          : Encrypted
 #DataVolumesEncrypted       : Encrypted
