@@ -309,6 +309,10 @@ $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 $keyVaultResourceId = $keyVault.ResourceId;
 $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $keyName).Key.kid;
 
+# https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-windows-aad
+# https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-windows
+# http://www.deployazure.com/compute/virtual-machines/azure-vm-agent-extensions-deep-dive-part-3/
+# https://docs.microsoft.com/en-us/azure/governance/policy/samples/ensure-https-storage-account
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName `
     -VMName $vmName `
     -AadClientID $app.ApplicationId `
