@@ -9,6 +9,7 @@ The projects in this solution make use of the following nuget packages which mus
 - Microsoft.IdentityModel.Client.ActivaeDirectory (ADAL)
 - Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
 - Microsoft.Azure.Services.AppAuthentication
+- Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVault
 
 ---
 

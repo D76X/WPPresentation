@@ -16,7 +16,7 @@ namespace _02KeyVaultApp
         // therefore avoiding any client secret exchange and the need to protect
         // the secret locally. You still have the thumbprint of the certificate
         // in the config file but that is NOT sensitive information as it is a 
-        // mear hash of teh certificate and cannot be used by attackers.
+        // mear hash of the certificate and cannot be used by attackers.
         private static string AppId;
         private static string PfxThumbprint;
 

@@ -17,3 +17,15 @@ Get-AzureRmContext
 (Get-AzureRmContext).Subscription
 Set-AzureRmContext -SubscriptionId "df17c9fe-de76-4143-bbae-77b75fa0705b"
 #----------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
+# Setting up
+Login-AzureRmAccount
+Get-AzureRmContext
+(Get-AzureRmContext).Subscription
+Set-AzureRmContext -SubscriptionId "df17c9fe-de76-4143-bbae-77b75fa0705b"
+Set-AzureRmContext -Subscription "df17c9fe-de76-4143-bbae-77b75fa0705b"
+Connect-AzureRmAccount
+# Find the subscriptions forthe account you are logged on
+Get-AzureRmSubscription
+# ----------------------------------------------------------------------------------------------------------------------------
