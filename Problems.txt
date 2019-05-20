@@ -1,0 +1,19 @@
+System.AggregateException: 'One or more errors occurred. (Parameters: Connection String: 
+[No connection string specified], Resource: https://database.windows.net/, Authority: https://login.microsoftonline.com/981b07d1-b261-4c3e-a400-b86f7809d9bc. 
+Exception Message: Tried the following 3 methods to get an access token, but none of them worked.
+
+Parameters: Connection String: [No connection string specified], 
+Resource: https://database.windows.net/, Authority: https://login.microsoftonline.com/981b07d1-b261-4c3e-a400-b86f7809d9bc. 
+Exception Message: Tried to get token using Managed Service Identity. Unable to connect to the Managed Service Identity (MSI) endpoint. 
+Please check that you are running on an Azure resource that has MSI setup.
+
+Parameters: Connection String: [No connection string specified], 
+Resource: https://database.windows.net/, Authority: https://login.microsoftonline.com/981b07d1-b261-4c3e-a400-b86f7809d9bc. 
+Exception Message: Tried to get token using Visual Studio. Access token could not be acquired. 
+Exception for Visual Studio token provider Microsoft.Asal.TokenService.exe : 
+TS003: Error, TS002: The account 'Davide.Spano@wuerth-phoenix.com' was not found in the tenant '981b07d1-b261-4c3e-a400-b86f7809d9bc'.
+ 
+Parameters: Connection String: [No connection string specified], 
+Resource: https://database.windows.net/, Authority: https://login.microsoftonline.com/981b07d1-b261-4c3e-a400-b86f7809d9bc. 
+Exception Message: Tried to get token using Azure CLI. Access token could not be acquired. 'az' is not recognized as an internal or external command,
+)'
