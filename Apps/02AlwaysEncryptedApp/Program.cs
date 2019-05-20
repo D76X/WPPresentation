@@ -1,3 +1,4 @@
+
 using Microsoft.Azure.KeyVault;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider;

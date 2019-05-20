@@ -15,7 +15,7 @@ namespace _03KeyVaultApp
     class Program
     {
         // the ID assigned to this app when registered an Azure ID
-        // In this version of teh app the is no secret as the app authenticate
+        // In this version of the app there is no secret as the app authenticate
         // on Azure AD by means of a certificate installed on the client machine
         // therefore avoiding any client secret exchange and the need to protect
         // the secret locally. You still have the thumbprint of the certificate
