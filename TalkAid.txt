@@ -4,6 +4,8 @@ Preparation
 
 Talk Plan
 
+0-Remember to ask "any questions?" every now and then
+
 1-Introduce yourself and Wüerth-Phoenix
 2-Present the structure of the talk 
   Intro >> OWASP >> Secrets >> Encryption >> (OAuth) >> Conclusion
@@ -15,7 +17,7 @@ Talk Plan
 	-Insecure Transport layer protection & Communication
 4-Give a tour of Azure the portal & Scripts, explain what it is
 5-Start the VM and show its make up 
-6-Mention concept Subscription. Azure AD, Resource Group
+6-Mention concept Subscription. Azure AD, Resource Group, Powershell, cloudshell, Azure CLI
 7-Provision a KeyVault as an example
 
 8-Secrets >> definition 
@@ -49,6 +51,11 @@ Tell them this is the Implicit Grant Flow for machine-to-machine comms
 Show that these apps read a secret from the KeyVault
 01KeyVaultApp uses cleint secrets
 02KeyVaultApp is better because it uses a certificate
+
+Tell them that 
+-02KeyVaultApp  only works on my machine because the cert is installed on it!
+-the cert is uploded to kv2 but it cannot be downloaded!
+-menstion HSMs
 
 This is the end of the KeyVault approach with secrets, keys & certificates
 There is also the MSI approach that does not require any & leverage RBAC
@@ -121,6 +128,9 @@ Tell the audience about the catch : the crtificate is on wpres1kv1 not wpres1kv2
 -However it is improved because it can decrypt the Always-Encrypted colums without exception
 -Explain that this has required a mixed approach as it needs to use the kv1 and cert to read the CN
  that is compatible with decrypting always-encrypted columns as the MSI style CS is not!!
+
+-Show SSL in Azure is easy
+-Show that 05WebApp is a service plan basic and not free as it must use a certificate to read the CN 
 
 -End => Thanks and Goodbye
 
