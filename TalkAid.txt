@@ -1,0 +1,143 @@
+Preparation
+
+1-Log in to WebApps with IE private browsing
+
+Talk Plan
+
+1-Introduce yourself and Wüerth-Phoenix
+2-Present the structure of the talk 
+  Intro >> OWASP >> Secrets >> Encryption >> (OAuth) >> Conclusion
+2-Explain why a busines needs security and what it is to the business
+3-Talk about OWASP highlight 
+	-Security Misconfiguration
+	-Sensitivy Data Exposure
+	-Insecure Cryptographic Storage
+	-Insecure Transport layer protection & Communication
+4-Give a tour of Azure the portal & Scripts, explain what it is
+5-Start the VM and show its make up 
+6-Mention concept Subscription. Azure AD, Resource Group
+7-Provision a KeyVault as an example
+
+8-Secrets >> definition 
+https://help.github.com/en/articles/about-searching-on-github#types-of-searches-on-github
+Dorking on Git Hubs
+MultipleActiveResultSets=False,password,Remove password,<appSettings>,<add key=, secret, Data Source=, App.config
+
+=========================================================================
+9-Demo 00 A Very Bad App!
+Connection String in clear text in app.config
+There is NO authentication
+Can run anywhere 
+Can do anything beacuse the CS is admin
+Show that however cannot read part of the data because is encrypted with Always-Encrypted
+SQL server firewall all open
+SQL Server show Active Directory Admin SQLUser group & Role Assignment
+=========================================================================
+
+10-where to store a secret
+11-Azure KeyVault & Key Vault Approach 
+
+12-01KeyVaultApp >> A very bad app gets a bit better thanks to Azure Key Vault
+13-02KeyVaultApp >> A very bad app gets much better with Azure Key Vault and Certificate
+Now we can use a Certificate to read a secret which may be a connection string!
+Show that secrets can be rotated, deleted and managed
+Show that you have enabled soft-delete & no-purge on the KeyVaults and show the script
+Show that you can use JWT.io to decode the token and see the exp date on them
+Tell them these are Acess Tokens issued by Azure AD
+Tell them this is the Implicit Grant Flow for machine-to-machine comms
+
+Show that these apps read a secret from the KeyVault
+01KeyVaultApp uses cleint secrets
+02KeyVaultApp is better because it uses a certificate
+
+This is the end of the KeyVault approach with secrets, keys & certificates
+There is also the MSI approach that does not require any & leverage RBAC
+
+14-MSI = Managed Service Identity
+Introduce the concept of MSI as a better alternative to Key Vault as 
+it eliminates the necessity for secrets, keys or Certificates alltogether
+but there are restriction 
+
+15-Encryption Data in transit and data at rest
+
+16-SSE >> show that the two storage accounts you have are already encrypted
+17-explain that SAa are for queues, tables, blobs, files not SQL
+18-explain that you may provide your own ecryption key 
+
+19-TDE >> show that TDE is the same as SSE but applied to SQL Server & Databases at rest
+
+20-Always-Encrypted explain that is a client-side technology
+01AlwaysEncryptedApp - A bad app that reads secure data insecurely
+02AlwaysEncryptedApp - A better app that reads secure data with improved security
+
+
+Illustrate that these two apps
+-are both registered with Azure AD
+-are both registered with wppres1kv2 in its AccessPolicies
+-thus they can read 1) the CS 2) the master key CMK_Auto1
+-illustrate that the keys where genearetd by SSMS wheb you encrypted the columns
+-Illustrate that the widzard will let you point to a KeyVault to store the CMK
+-Illustrate that AE is good because the CMK does not reside on the same server!!!
+-Illustrate that AE is good because leverage Azure AD registration!!
+
+Illustrate that they are the same thing but 02AlwaysEncryptedApp is slightly better
+beacuse it reads the CS off KeyVault using its client secrets.
+
+03AlwaysEncryptedApp - A secure app that reads secure data securely
+
+Then challenge the audience with the Exercise slide 03AlwaysEncryptedApp to combine
+the certificate based approach of 02KeyVaultApp to reading secrets with what is done 
+in 02AlwaysEncryptedApp to obtain a very secure app with no secrets, no CS and 
+Always-Encrypted.
+
+Tell the audience about the catch : the crtificate is on wpres1kv1 not wpres1kv2 !!! 
+ 
+21- ADE illustrate that MyVM1 has both disks encrypted
+-Show that kv1 holds a BEK secret and that is used with MSI to get the backup done
+-Show that kv1 holds a vm1adekey1 secret tah tis used as encryption disk by ADE
+-Show that a dummy app is registered with Azure AD to allow ADE
+-Show that a dummy app is the access policies of kv1 to get hold of the encryption key
+
+22-A step back to MSI with AppServices
+
+-Show 04WebApp and that its CS is MSI style (no credentials!) => no need for KeyVault
+-Show that 04WebApp is registered with Azure AD
+-Show that 04WebApp is part oif the SQLUser group on Azure AD
+-Show that SQLUsers is the Active Directory admin on the SQL Server 
+-Show that the same user is provisioned on the database wppres1db1 in SSMS 
+-Show that SQL Server Role Assignment in IAM is also set on the SQL Server for the group SQLUsers 
+-Tell them that depite that this is not enough and the user SQLUser must be also created 
+ on the database as explained here 
+ https://app.pluralsight.com/player?course=microsoft-azure-resources-managed-identities-implementing&author=manoj-nair&name=5d71471b-69b0-4b29-b799-fd759149e3fe&clip=4&mode=live
+
+-Tell them that 04WebApp its a very secure app because
+ -It uses authentication on Azure AD
+ -It uses MSI instead of connection strings to interact with the DB
+ -It is part of Azure Infrastructure thus safer than on-premise
+ -The catch is that it blows when it also tries to decrypt the Always-Encrypted colums
+ -However it does not expose the stack trace which is good 
+
+-Show 05WebApp and explain that it is the same as 04WebApp 
+-However it is improved because it can decrypt the Always-Encrypted colums without exception
+-Explain that this has required a mixed approach as it needs to use the kv1 and cert to read the CN
+ that is compatible with decrypting always-encrypted columns as the MSI style CS is not!!
+
+-End => Thanks and Goodbye
+
+======================================================
+Acronyms
+
+MSI = Managed Service Identity
+RBAC= Roll Based Access Control
+SSE = Storage Servive Encryption
+TDE= Transparent Data Encryption
+CMK = Column Master Key
+CEK = Colum Encryption Key
+ADE = Azure Disk Encryption
+IAM = Identity Access Management
+======================================================
+
+ToDos
+
+Reposition slide demo 03AlwaysEncrypted
+Eliminate the double always encrypted vs TDE slide
